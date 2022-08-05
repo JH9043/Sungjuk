@@ -86,7 +86,7 @@ public class Student {
 	@Override
 	public String toString() { //%10s =오른정렬로 10자리 받겠다
 							   //%-10s =왼쪽정렬로 10자리 받겠다
-		return String.format("%-10s\t%10s\t%5d\t%5d\t%5d\t%5d\t\t%5d\t%8.2f\t%3c%n",
+		return String.format("%s %s\t%d\t%d\t%d\t%d\t%d\t%.2f\t%c%n",
 				hakbun, name, kor, eng, mat, edp, tot, avg, grade);
 	}
 
