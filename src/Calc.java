@@ -1,16 +1,15 @@
-
+import java.util.List;
 
 public class Calc {
 
-	private Student array[];
+	private List<Student> list;
 
-	public Calc(Student[] array) {
-		this.array = array;
+	public Calc(List<Student> list) {
+		this.list = list;
 	}
 
-	public void calc(int count) {
-		for (int i = 0; i < count; i++) {
-			Student student = this.array[i];
+	public void calc() {
+		for (Student student : this.list) {
 			int total = this.calcTotal(student.getKor(), student.getEng(), student.getMat(), student.getEdp());
 			double avg = this.calcAvg(total, 4);
 			char grade = this.calcGrade(avg);
@@ -23,6 +22,11 @@ public class Calc {
 	private int calcTotal(int kor, int eng, int mat, int edp) {
 		return kor + eng + mat + edp;
 	}
+	
+	/**
+	 * @param su : 과목수
+	 * @param double : 평균
+	 */
 
 	private double calcAvg(int total, int su) {
 		return total / (double) su;

@@ -1,38 +1,36 @@
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Sort {
 
-	private Student array[];
-	private int count;
+	private List<Student> list;
 
-	public Sort(Student[] array,int count) {
-		this.array = array;
-		this.count = count;
-	}
-	public void bubbleSort() {
-		for (int i = 0; i < count-1; i++) {
-			for (int j = 0; j < count-1; j++) {
-				if(this.array[j].getTot() < this.array[j+1].getTot()) {
-					this.swap(j,j+1);
-				}
-			}
-		}
+
+	public Sort(List<Student> list) {
+		this.list = list;
 	}
 	
-	public void SelectionSort() {
-		for (int i = 0; i < count-1; i++) {
-			for (int j = i+1; j < count; j++) {
-				if(this.array[i].getTot()<this.array[j].getTot())
-				{
-					this.swap(i, j);
-				}
+//	public void sort() { //Comparator 재정의 해서 자식 만들거나
+//		Collections.sort(this.list,new MyComparator());
+//	}
+//	
+//	class MyComparator implements Comparator<Student>{
+//
+//		@Override
+//		public int compare(Student front, Student back) {
+//			return back.getTot()-front.getTot();
+//		}
+//		
+//	}
+	public void sort() {	//익명 클래스 이용한 방법
+		Collections.sort(this.list,new Comparator<Student>() {
+
+			@Override
+			public int compare(Student front, Student back) {
+				return front.getName().compareTo(back.getName());
 			}
-		}
-	}
-	
-	private void swap(int front, int back) {
-		Student temp = this.array[front];
-		this.array[front] = this.array[back];
-		this.array[back] = temp;
+		});
 	}
 	
 }

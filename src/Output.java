@@ -1,9 +1,9 @@
-import java.util.Arrays;
+import java.util.List;
 
 public class Output {
- public void print(Student array[],int count) {
-	 for (int i = 0; i < count; i++) {
-		System.out.println(array[i].toString());
+ public void print(List<Student> list) {
+	 for (Student student : list) {
+		System.out.print(student); //student.toString
 	}
  }
  

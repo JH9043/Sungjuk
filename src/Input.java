@@ -1,83 +1,41 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Input {
-	private Student array[];
+	private List<Student> list;
 	private Scanner sc;
 	private File file;
-	private BufferedReader br;
 
-	public Input(Student[] array) {
-		this.array = array;
+	public Input(List<Student> list) {
+		this.list = list;
 
 		this.file = new File("C:/Temp/sungjuk_utf8.dat");
 
 		try {
-//			this.br = new BufferedReader(new FileReader(this.file));
-			this.sc = new Scanner(file, "utf-8");
+			this.sc = new Scanner(this.file, "utf-8");
 		} catch (FileNotFoundException e) {
 			System.out.println("File Not Found");
 		}
 	}
 
-//	public int fileinput() {
-//		int count = 0;
-//		while(this.sc.hasNextLine()){
-//			String str = sc.nextLine(); //다음 라인 넘어가는거
-//			count++;
-//		}
-//		return count;
-//	}
-	public int fileinput() {
-		int count = 0;
+	public void fileinput() {
 		String line = null;
-		while(true) {
-			count++;
-			try {
-				line = this.br.readLine();
-			} catch (Exception e) {
-				// TODO: handle exception
+		StringTokenizer st = null;
+		while (this.sc.hasNextLine()) {
+			line = this.sc.nextLine();
+			st = new StringTokenizer(line); // whitespace 기준으로 토큰화하는 클래스
+			String array[] = new String[st.countTokens()]; // 방 6개 생성
+			for (int i = 0; i < array.length; i++) {
+				array[i] = st.nextToken();
 			}
-			
-			if(line == null) break;{
-				String lines [] = line.split("\\s+");
-				System.out.println(lines[0]);
-				
-			}
-			
-			
+			Student student = new Student(array[0], array[1], Integer.parseInt(array[2]), Integer.parseInt(array[3]),
+					Integer.parseInt(array[4]), Integer.parseInt(array[5]));
+			this.list.add(student);
 		}
-		
-	}
-	
-	
-//	public int fileinput() {
-//		int count = 0;
-//		String line = null;
-//		while(true) {
-//			count++;
-//		try {
-//			line =this.br.readLine();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		if(line ==null) break;
-//		}
-//		return count-1;
-//	}
-	
-
-	
-	public int input() {
-		return 0;
 
 	}
+
 }
